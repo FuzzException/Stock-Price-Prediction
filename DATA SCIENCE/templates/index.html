@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Price Prediction</h1>
+        <form action="{{ url_for('results') }}" method="post">
+            <label for="symbol">Stock Symbol:</label>
+            <select id="symbol" name="symbol" required>
+                <option value="">Select a stock symbol</option>
+                <option value="AAPL">Apple Inc. Common Stock (AAPL)</option>
+                <option value="ABNB">Airbnb Inc. Class A Common Stock (ABNB)</option>
+                <option value="ABT">Abbott Laboratories Common Stock (ABT)</option>
+                <option value="ADBE">Adobe Inc. Common Stock (ADBE)</option>
+                <option value="AMZN">Amazon.com Inc. Common Stock (AMZN)</option>
+                <option value="COKE">Coca-Cola Consolidated Inc. Common Stock (COKE)</option>
+                <option value="CTSH">Cognizant Technology Solutions Corporation Class A Common Stock (CTSH)</option>
+                <option value="DELL">Dell Technologies Inc. Class C Common Stock (DELL)</option>
+                <option value="DIS">Walt Disney Company (The) Common Stock (DIS)</option>
+                <option value="EBAY">eBay Inc. Common Stock (EBAY)</option>
+                <option value="F">Ford Motor Company Common Stock (F)</option>
+                <option value="FDX">FedEx Corporation Common Stock (FDX)</option>
+                <option value="GOOG">Alphabet Inc. Class C Capital Stock (GOOG)</option>
+                <option value="GOOGL">Alphabet Inc. Class A Common Stock (GOOGL)</option>
+                <option value="GS">Goldman Sachs Group Inc. (The) Common Stock (GS)</option>
+                <option value="HDB">HDFC Bank Limited Common Stock (HDB)</option>
+                <option value="HOG">Harley-Davidson Inc. Common Stock (HOG)</option>
+                <option value="HPE">Hewlett Packard Enterprise Company Common Stock (HPE)</option>
+                <option value="IBN">ICICI Bank Limited Common Stock (IBN)</option>
+                <option value="IMAX">Imax Corporation Common Stock (IMAX)</option>
+                <option value="INFY">Infosys Limited American Depositary Shares (INFY)</option>
+                <option value="JPM">JP Morgan Chase & Co. Common Stock (JPM)</option>
+                <option value="MCD">McDonald's Corporation Common Stock (MCD)</option>
+                <option value="MDB">MongoDB Inc. Class A Common Stock (MDB)</option>
+                <option value="MMYT">MakeMyTrip Limited Ordinary Shares (MMYT)</option>
+                <option value="MNSO">MINISO Group Holding Limited American Depositary Shares (MNSO)</option>
+                <option value="MSFT">Microsoft Corporation Common Stock (MSFT)</option>
+                <option value="NFLX">Netflix Inc. Common Stock (NFLX)</option>
+                <option value="NKE">Nike Inc. Common Stock (NKE)</option>
+                <option value="NOK">Nokia Corporation Sponsored American Depositary Shares (NOK)</option>
+                <option value="NVDA">NVIDIA Corporation Common Stock (NVDA)</option>
+                <option value="PEP">PepsiCo Inc. Common Stock (PEP)</option>
+                <option value="PFE">Pfizer Inc. Common Stock (PFE)</option>
+                <option value="QCOM">QUALCOMM Incorporated Common Stock (QCOM)</option>
+                <option value="RACE">Ferrari N.V. Common Shares (RACE)</option>
+                <option value="RELI">Reliance Global Group Inc. Common Stock (RELI)</option>
+                <option value="RL">Ralph Lauren Corporation Common Stock (RL)</option>
+                <option value="RS">Reliance Inc. Common Stock (RS)</option>
+                <option value="SBUX">Starbucks Corporation Common Stock (SBUX)</option>
+                <option value="SKX">Skechers U.S.A. Inc. Common Stock (SKX)</option>
+                <option value="SPOT">Spotify Technology S.A. Ordinary Shares (SPOT)</option>
+                <option value="TM">Toyota Motor Corporation Common Stock (TM)</option>
+                <option value="TRIP">TripAdvisor Inc. Common Stock (TRIP)</option>
+                <option value="TSLA">Tesla Inc. Common Stock (TSLA)</option>
+                <option value="UBER">Uber Technologies Inc. Common Stock (UBER)</option>
+                <option value="UDMY">Udemy Inc. Common Stock (UDMY)</option>
+                <option value="UNB">Union Bankshares Inc. Common Stock (UNB)</option>
+                <option value="V">Visa Inc. (V)</option>
+                <option value="WIT">Wipro Limited Common Stock (WIT)</option>
+                <option value="WLY">John Wiley & Sons Inc. Common Stock (WLY)</option>
+                <option value="YELP">Yelp Inc. Common Stock (YELP)</option>
+                <option value="YTRA">Yatra Online Inc. Ordinary Shares (YTRA)</option>
+                <option value="ZI">ZoomInfo Technologies Inc Common Stock (ZI)</option>
+                <option value="AAL">American Airlines Group Inc. (AAL)</option>
+                <option value="WBD">Warner Bros. Discovery, Inc. (WBD)</option>
+                <option value="INTC">Intel Corporation (INTC)</option>
+                <option value="WMT">Walmart Inc. (WMT)</option>
+                <option value="PYPL">PayPal Holdings, Inc. (PYPL)</option>
+                <option value="META">Meta Platforms, Inc. (META)</option>
+                <option value="JNJ">Johnson & Johnson (JNJ)</option>
+                <option value="PINS">Pinterest, Inc. (PINS)</option>
+                <option value="ORCL">Oracle Corporation (ORCL)</option>
+                <option value="TATASTEEL.NS">Tata Steel Limited (TATASTEEL.NS)</option>
+                <option value="ZOMATO.NS">Zomato Limited (ZOMATO.NS)</option>
+                <option value="SBIN.NS">State Bank of India (SBIN.NS)</option>
+                <option value="YESBANK.BO">Yes Bank Limited (YESBANK.BO)</option>
+                <option value="UNIONBANK.NS">Union Bank of India (UNIONBANK.NS)</option>
+                <option value="FEDERALBANK.NS">The Federal Bank Limited (FEDERALBANK.NS)</option>
+                <option value="PARA">Paramount Global (PARA)</option>
+                <option value="NSANY">Nissan Motor Co., Ltd. (NSANY)</option>
+                <option value="DUOL">Duolingo, Inc. (DUOL)</option>
+                <option value="RDDT">Reddit, Inc. (RDDT)</option>
+            </select><br>
+            <label for="start_date">Start Date (YYYY-MM-DD):</label>
+            <input type="date" id="start_date" name="start_date" required><br>
+            <button type="Predict">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
